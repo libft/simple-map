@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_simple_map_static_set.c                         :+:      :+:    :+:   */
+/*   ft_simple_map_static_get.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 02:01:04 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/05/12 02:39:09 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/05/12 02:41:22 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 #include <stdlib.h>
 
-static bool	ft_simple_map_static_set_internal(
-	const t_ft_simple_map_static_context_set *context,
+static bool	ft_simple_map_static_get_internal(
+	const t_ft_simple_map_static_context_get *context,
 	t_ft_simple_map_static_value **current,
 	size_t depth
 )
@@ -23,17 +23,14 @@ static bool	ft_simple_map_static_set_internal(
 	const size_t	index = ((unsigned char *) context->key)[depth];
 
 	if (!*current)
-		*current = (t_ft_simple_map_static_value *)
-			malloc(sizeof(t_ft_simple_map_static_value));
-	if (!*current)
 		return (true);
 	if (depth + 1 == context->self->key_length)
 	{
-		(*current)->value[index] = context->value;
+		*context->out = (*current)->value[index];
 		return (false);
 	}
 	return (
-		ft_simple_map_static_set_internal(
+		ft_simple_map_static_get_internal(
 			context,
 			&(*current)->array[index],
 			depth + 1
@@ -41,16 +38,16 @@ static bool	ft_simple_map_static_set_internal(
 	);
 }
 
-bool	ft_simple_map_static_set(
+bool	ft_simple_map_static_get(
 	t_ft_simple_map_static *self,
 	void *key,
-	void *value
+	void **out
 )
 {
-	const t_ft_simple_map_static_context_set	context = {self, key, value};
+	const t_ft_simple_map_static_context_get	context = {self, key, out};
 
 	return (
-		ft_simple_map_static_set_internal(
+		ft_simple_map_static_get_internal(
 			&context,
 			&self->values,
 			0
