@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_simple_map_static_set.c                         :+:      :+:    :+:   */
+/*   ft_simple_map_static_pop.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 02:01:04 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/05/12 03:11:24 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/05/12 03:32:35 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,61 +14,57 @@
 
 #include <stdlib.h>
 
-static void	*ft_calloc(size_t count, size_t size)
+static void	ft_simple_map_static_pop_internal_cleanup(
+	t_ft_simple_map_static_value **current
+)
 {
-	const size_t	total_size = count * size;
-	char *const		result = (char *)malloc(total_size);
-	size_t			i;
+	size_t	i;
 
-	if (!result)
-		return (NULL);
 	i = 0;
-	while (i < total_size)
-		result[i++] = 0;
-	return (result);
+	while (i < (1 << CHAR_BIT))
+		if ((*current)->value[i++])
+			return ;
+	free(*current);
+	*current = NULL;
 }
 
-static bool	ft_simple_map_static_set_internal(
-	const t_ft_simple_map_static_context_set *context,
+static bool	ft_simple_map_static_pop_internal(
+	const t_ft_simple_map_static_context_get *context,
 	t_ft_simple_map_static_value **current,
 	size_t depth
 )
 {
 	const size_t	index = ((unsigned char *) context->key)[depth];
-	const bool		fresh = !*current;
 	bool			error;
 
-	if (fresh)
-		*current = (t_ft_simple_map_static_value *)
-			ft_calloc(1, sizeof(t_ft_simple_map_static_value));
 	if (!*current)
 		return (true);
 	if (depth + 1 == context->self->key_length)
 	{
-		if ((*current)->value[index])
-			return (true);
-		(*current)->value[index] = context->value;
-		return (false);
+		if (context->out)
+			*context->out = (*current)->value[index];
+		(*current)->value[index] = NULL;
+		error = false;
 	}
-	error = ft_simple_map_static_set_internal(
-			context,
-			&(*current)->array[index],
-			depth + 1);
-	if (error && fresh)
-		free(*current);
+	else
+		error = ft_simple_map_static_pop_internal(
+				context,
+				&(*current)->array[index],
+				depth + 1);
+	ft_simple_map_static_pop_internal_cleanup(current);
 	return (error);
 }
 
-bool	ft_simple_map_static_set(
+bool	ft_simple_map_static_pop(
 	t_ft_simple_map_static *self,
 	void *key,
-	void *value
+	void **out
 )
 {
-	const t_ft_simple_map_static_context_set	context = {self, key, value};
+	const t_ft_simple_map_static_context_get	context = {self, key, out};
 
 	return (
-		ft_simple_map_static_set_internal(
+		ft_simple_map_static_pop_internal(
 			&context,
 			&self->values,
 			0
