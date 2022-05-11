@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 01:42:14 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/05/12 02:27:26 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/05/12 02:44:55 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 # include <stdbool.h>
 
 struct s_ft_simple_map_static	*new_ft_simple_map_static(size_t key_length);
+void							ft_simple_map_static_free(
+									struct s_ft_simple_map_static *self,
+									void (*free_value)(void *value));
 bool							ft_simple_map_static_set(
 									struct s_ft_simple_map_static *self,
 									void *key,
