@@ -18,4 +18,6 @@ clean:
 	rm -rf .build
 fclean: clean
 	rm -f libft_simple_map.a
-.PHONY: all clean fclean libft_simple_map.a
+test:
+	cd test && make retest
+.PHONY: all clean fclean libft_simple_map.a test
