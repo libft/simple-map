@@ -1,13 +1,9 @@
-Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
-MAKE := $(MAKE) $(if $(filter 1,$(V) $(VERBOSE)),,--no-print-directory)
-
-CC ?= clang
+include ../common/prelude.mk
 
 all: test
 clean:
-	$Qrm -rf ./tmp
-fclean:
-	$Q$(MAKE) clean
+	$Qrm -rf ./tmp ./obj
+fclean: clean
 	$Qrm -rf ./src
 re:
 	$Q$(MAKE) fclean
@@ -19,5 +15,7 @@ refresh:
 retest:
 	$Q$(MAKE) refresh
 	$Q$(MAKE) test
-test: $(shell cd src && find . -maxdepth 1 -type d -name "*.c")
+test:
+	$Q$(MAKE) refresh
+	$Q$(MAKE) -f test.mk test
 .PHONY: all clean fclean re refresh retest test

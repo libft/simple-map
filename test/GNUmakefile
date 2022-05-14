@@ -1,5 +1,5 @@
-Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
-MAKE := $(MAKE) $(if $(filter 1,$(V) $(VERBOSE)),,--no-print-directory)
+include common/prelude.mk
+
 CASES := $(sort $(wildcard case*))
 RULES := all clean fclean re refresh retest test
 CORES := $(shell sh scripts/nproc.sh)
