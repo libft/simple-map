@@ -1,0 +1,14 @@
+get,4,true,anything
+get,2,true,anything
+set,4,false,Hello world!
+set,2,false,Bye world!
+set,4,true,test
+set,2,true,anything
+get,4,false,Hello world!
+get,2,false,Bye world!
+set,4,true,anything
+set,2,true,anything
+pop,4,false,Hello world!
+pop,2,false,Bye world!
+set,4,false,test
+set,2,false,anything

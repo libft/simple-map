@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 10:58:57 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/05/16 23:24:30 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/05/17 02:02:02 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static bool	test_set(int key, bool expected_result, const char *value)
 
 	if (!str)
 		return (true);
-	result = ft_simple_map_static_set(g_map, (void *)&key, (void *)value);
+	result = ft_simple_map_static_set(g_map, (void *)&key, (void *)str);
 	return (result != expected_result);
 }
 

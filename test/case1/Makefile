@@ -8,21 +8,17 @@ fclean:
 re:
 	$Q$(MAKE) fclean
 	$Q$(MAKE) all
-refresh: clean
-retest:
-	$Q$(MAKE) fclean
-	$Q$(MAKE) test
-test: refresh
+test:
 	$Q$(MAKE) test_none
 	-$Q[ ! -f ../target/address.a ] || $(MAKE) test_address
 	-$Q[ ! -f ../target/memory.a ] || $(MAKE) test_memory
 	-$Q[ ! -f ../target/undefined.a ] || $(MAKE) test_undefined
-.PHONY: all clean fclean re refresh retest test
+.PHONY: all clean fclean re test
 
 CC := clang
 
 $(addprefix test_,none address memory undefined): test_%: obj/test_%.exe
-	$Q$(foreach t,$(shell find cases -type f -name "*.csv"),./$< < $t && )true
+	$Q$(foreach t,$(shell find ../data/cases -type f -name "*.csv"),./$< < $t && )true
 obj/test_none.exe: obj/lib.none.a
 	$Q$(CC) -o $@ ../target/none.a $^
 obj/test_address.exe: obj/lib.address.a

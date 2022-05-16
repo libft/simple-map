@@ -1,7 +1,0 @@
-get,42,false,
-set,42,true,Hello world!
-get,42,true,Hello world!
-set,42,false,
-pop,42,true,Hello world!
-get,42,false,
-set,42,true,Bye world!

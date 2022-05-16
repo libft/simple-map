@@ -1,7 +1,7 @@
 include common/prelude.mk
 
 CASES := $(sort $(wildcard case*))
-COMMON_RULES := test clean fclean retest
+COMMON_RULES := test clean fclean
 CORES := $(shell sh scripts/nproc.sh)
 
 all: test
@@ -21,12 +21,8 @@ $(foreach r, \
 	)) \
 )
 .PHONY: re
-re:
-	$(MAKE) fclean
-	$(MAKE) all
 
 test: prepare_test
-retest: prepare_test
 clean: prepare_clean
 fclean: prepare_clean
 

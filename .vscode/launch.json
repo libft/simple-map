@@ -1,0 +1,15 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug case2",
+      "program": "${workspaceFolder}/test/case2/test.exe",
+      "args": [
+        "../data/cases/2-two-entries.csv"
+      ],
+      "cwd": "${workspaceFolder}/test/case2",
+    }
+  ]
+}

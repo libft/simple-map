@@ -1,2 +1,3 @@
 .build
 libft_simple_map.a
+*.dSYM

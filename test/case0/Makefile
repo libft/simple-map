@@ -10,10 +10,7 @@ re:
 refresh: fclean
 	$Qcp -r ../../src tmp
 	$Qmv tmp src
-retest:
-	$Q$(MAKE) fclean
-	$Q$(MAKE) test
 test: refresh
 	$Q$(MAKE) refresh
 	$Q$(MAKE) -f test.mk test
-.PHONY: all clean fclean re refresh retest test
+.PHONY: all clean fclean re refresh test

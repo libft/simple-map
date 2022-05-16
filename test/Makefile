@@ -6,7 +6,5 @@ all: common
 clean: common
 fclean: common
 re: common
-refresh: common
-retest: common
 test: common
-.PHONY: all clean fclean re refresh retest test
+.PHONY: all clean fclean re test
