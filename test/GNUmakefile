@@ -20,7 +20,6 @@ $(foreach r, \
 		$r \
 	)) \
 )
-.PHONY: re
 
 test: prepare_test
 clean: prepare_clean
