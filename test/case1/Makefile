@@ -10,9 +10,9 @@ re:
 	$Q$(MAKE) all
 test:
 	$Q$(MAKE) test_none
-	-$Q[ ! -f ../target/address.a ] || $(MAKE) test_address
-	-$Q[ ! -f ../target/memory.a ] || $(MAKE) test_memory
-	-$Q[ ! -f ../target/undefined.a ] || $(MAKE) test_undefined
+	$Q[ ! -f ../target/address.a ] || $(MAKE) test_address
+	$Q[ ! -f ../target/memory.a ] || $(MAKE) test_memory
+	$Q[ ! -f ../target/undefined.a ] || $(MAKE) test_undefined
 .PHONY: all clean fclean re test
 
 CC := clang
