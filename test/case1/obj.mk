@@ -1,7 +1,7 @@
 include ../../common/prelude.mk
 
-CC ?= clang
-CFLAGS ?= -Wall -Wextra -Werror -std=c99 -pedantic
+CC := clang
+CFLAGS := -Wall -Wextra -Werror -std=c99 -pedantic
 ARFLAGS := cr$(if $(filter 1,$(V) $(VERBOSE)),v,s)
 
 SRCS := $(shell find ../src -maxdepth 1 -type f -name "*.c")
