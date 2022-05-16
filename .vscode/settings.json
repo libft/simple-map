@@ -6,6 +6,6 @@
     "${workspaceFolder}/src",
   ],
   "files.associations": {
-    "stdio.h": "*.c",
+    "*.h": "c",
   },
 }

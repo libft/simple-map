@@ -1,10 +1,14 @@
 include common/prelude.mk
 
 CASES := $(sort $(wildcard case*))
-COMMON_RULES := all clean fclean refresh retest test
+COMMON_RULES := test clean fclean retest
 CORES := $(shell sh scripts/nproc.sh)
 
-.PHONY: $(COMMON_RULES)
+all: test
+re:
+	$Q$(MAKE) fclean
+	$Q$(MAKE) all
+.PHONY: all $(COMMON_RULES) re
 define build_common_rule
 $1:
 	$Q$(foreach t,$(CASES),$(MAKE) -C $t -j $(CORES) $1 && )true
