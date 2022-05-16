@@ -22,8 +22,7 @@ test: refresh
 CC := clang
 
 $(addprefix test_,none address memory undefined): test_%: obj/test_%.exe
-	$Q
-	$Q./$< < cases/1-basic.csv
+	$Q$(foreach t,$(shell find cases -type f -name "*.csv"),./$< < $t && )true
 obj/test_none.exe: obj/lib.none.a
 	$Q$(CC) -o $@ ../target/none.a $^
 obj/test_address.exe: obj/lib.address.a
