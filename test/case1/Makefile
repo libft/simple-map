@@ -19,18 +19,16 @@ test: refresh
 	$Q[ ! -f ../target/undefined.a ] || $(MAKE) test_undefined
 .PHONY: all clean fclean re refresh retest test
 
-VARIANTS := none address memory undefined
-
-$(addprefix test_,$(VARIANTS)): test_%: obj/test_%.exe
-	$Q./$<
+$(addprefix test_,none address memory undefined): test_%: obj/test_%.exe
+	$Q./$< < cases/1-basic.csv
 obj/test_none.exe: ../target/none.a obj/none.a
-	$Q$(CC) $(CFLAGS) -o $@ $^
+	$Q$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ $^
 obj/test_address.exe: ../target/address.a obj/address.a
-	$Q$(CC) $(CFLAGS) -fsanitize=address -o $@ $^
+	$Q$(CC) $(CFLAGS) $(CPPFLAGS) -fsanitize=address -o $@ $^
 obj/test_memory.exe: ../target/memory.a obj/memory.a
-	$Q$(CC) $(CFLAGS) -fsanitize=memory -o $@ $^
+	$Q$(CC) $(CFLAGS) $(CPPFLAGS) -fsanitize=memory -o $@ $^
 obj/test_undefined.exe: ../target/undefined.a obj/undefined.a
-	$Q$(CC) $(CFLAGS) -fsanitize=undefined -o $@ $^
+	$Q$(CC) $(CFLAGS) $(CPPFLAGS) -fsanitize=undefined -o $@ $^
 obj/%.a: | obj/Makefile
 	$Q$(MAKE) -C obj $(@F)
 obj/Makefile:

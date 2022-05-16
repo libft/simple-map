@@ -1,0 +1,11 @@
+{
+  "C_Cpp.default.includePath": [
+    "${workspaceFolder}/src",
+  ],
+  "c-cpp-flylint.includePaths": [
+    "${workspaceFolder}/src",
+  ],
+  "files.associations": {
+    "stdio.h": "*.c",
+  },
+}

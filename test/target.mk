@@ -6,7 +6,7 @@ ARFLAGS := cr$(if $(filter 1,$(V) $(VERBOSE)),v,s)
 
 .PHONY: clean
 clean:
-	$Qrm -rf target/*.o target/*.a
+	$Qrm -rf target/*.o
 
 SRCS := $(shell cd target && find . -maxdepth 1 -type f -name "*.c")
 

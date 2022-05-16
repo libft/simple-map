@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 01:42:14 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/05/12 02:39:29 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/05/16 12:03:50 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdbool.h>
 # include <limits.h>
 
-# include "ft_simple_map.h"
+# define S_FT_SIMPLE_MAP_STATIC_DEFINED
 
 typedef union u_ft_simple_map_static_value
 {

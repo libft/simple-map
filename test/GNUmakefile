@@ -38,3 +38,4 @@ prepare_test: prepare_clean
 	-$Q$(MAKE) -f target.mk -j $(CORES) target/address.a
 	-$Q$(MAKE) -f target.mk -j $(CORES) target/memory.a
 	-$Q$(MAKE) -f target.mk -j $(CORES) target/undefined.a
+	$Q$(MAKE) -f target.mk -j $(CORES) clean
