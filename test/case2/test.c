@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 10:58:57 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/05/17 18:09:35 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/05/17 18:22:14 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ bool	test(FILE *f)
 	char					v[1024];
 	t_ft_simple_map_static	*m;
 
+	puts("[DEBUG] Leak test start");
 	fseek(f, 0, SEEK_SET);
 	leak_test_start();
 	m = new_ft_simple_map_static(sizeof(int));
@@ -111,8 +112,7 @@ bool	test(FILE *f)
 			|| (!strcmp(c, "set") && test_set(m, key, !strcmp(r, "true"), v))
 			|| (!strcmp(c, "pop") && test_pop(m, key, !strcmp(r, "true"), v))
 			|| (strcmp(c, "get") && strcmp(c, "set") && strcmp(c, "pop")))
-			return (leak_test_start(), ft_simple_map_static_free(m, test_free),
-				false);
+			break ;
 	}
 	leak_test_start();
 	ft_simple_map_static_free(m, test_free);

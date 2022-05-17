@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 02:01:04 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/05/12 03:11:24 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/05/17 18:24:10 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,10 @@ static bool	ft_simple_map_static_set_internal(
 			context,
 			&(*current)->array[index],
 			depth + 1);
-	if (error && fresh)
-		free(*current);
+	if (!(error && fresh))
+		return (error);
+	free(*current);
+	*current = NULL;
 	return (error);
 }
 
