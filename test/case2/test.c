@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 10:58:57 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/05/17 17:19:21 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/05/17 18:09:35 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static bool	test_set(
 
 	printf("test_set(%d, value : \"%-7.7s...\") == %s\n", key, value, g_b[!!e]);
 	if (!str)
-		return (true);
+		exit(EXIT_FAILURE);
 	leak_test_start();
 	result = ft_simple_map_static_set(map, (void *)&key, (void *)str);
 	leak_test_end();
@@ -98,13 +98,12 @@ bool	test(FILE *f)
 	char					v[1024];
 	t_ft_simple_map_static	*m;
 
-	printf("[DEBUG] Test start!\n");
 	fseek(f, 0, SEEK_SET);
 	leak_test_start();
 	m = new_ft_simple_map_static(sizeof(int));
 	leak_test_end();
 	if (!m)
-		return (true);
+		return (false);
 	while (fscanf(f, "\n%3[^,],%d,%5[^,],%1000[^\n]", c, &key, r, v) == 4)
 	{
 		if ((strcmp(r, "true") && strcmp(r, "false"))
@@ -112,7 +111,8 @@ bool	test(FILE *f)
 			|| (!strcmp(c, "set") && test_set(m, key, !strcmp(r, "true"), v))
 			|| (!strcmp(c, "pop") && test_pop(m, key, !strcmp(r, "true"), v))
 			|| (strcmp(c, "get") && strcmp(c, "set") && strcmp(c, "pop")))
-			return (true);
+			return (leak_test_start(), ft_simple_map_static_free(m, test_free),
+				false);
 	}
 	leak_test_start();
 	ft_simple_map_static_free(m, test_free);
