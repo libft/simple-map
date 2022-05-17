@@ -4,12 +4,24 @@
     {
       "type": "lldb",
       "request": "launch",
+      "name": "Debug case1",
+      "program": "${workspaceFolder}/test/case1/obj/test_none.exe",
+      "args": [
+        "../data/cases/2-two-entries.csv"
+      ],
+      "cwd": "${workspaceFolder}/test/case2",
+      "preLaunchTask": "Build case2",
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
       "name": "Debug case2",
       "program": "${workspaceFolder}/test/case2/test.exe",
       "args": [
         "../data/cases/2-two-entries.csv"
       ],
       "cwd": "${workspaceFolder}/test/case2",
-    }
-  ]
+      "preLaunchTask": "Build case2",
+    },
+  ],
 }

@@ -16,6 +16,7 @@ test:
 .PHONY: all clean fclean re test
 
 CC := clang
+CFLAGS := -Wall -Wextra -Werror -std=c99 -pedantic -g3
 
 $(addprefix test_,none address memory undefined): test_%: obj/test_%.exe
 	$Q$(foreach t,$(shell find ../data/cases -type f -name "*.csv"),./$< < $t && )true

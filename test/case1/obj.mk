@@ -1,7 +1,7 @@
 include ../../common/prelude.mk
 
 CC := clang
-CFLAGS := -Wall -Wextra -Werror -std=c99 -pedantic
+CFLAGS := -Wall -Wextra -Werror -std=c99 -pedantic -g3
 CPPFLAGS := -I../../target
 ARFLAGS := cr$(if $(filter 1,$(V) $(VERBOSE)),v,s)
 
