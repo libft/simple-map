@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   test.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/17 17:04:36 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/05/17 17:06:53 by Juyeong Maing    ###   ########.fr       */
+/*   Created: 2022/05/17 17:05:21 by Juyeong Maing     #+#    #+#             */
+/*   Updated: 2022/05/17 17:05:39 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#ifndef TEST_H
+# define TEST_H
 
-#include "leak_test/include/ft/leak_test.h"
+# include <stdio.h>
+# include <stdbool.h>
 
-#include "test.h"
+bool	test(FILE *f);
 
-int	main(int argc, char **argv)
-{
-	FILE	*f;
-	int		result;
-
-	if (argc != 2)
-		return (EXIT_FAILURE);
-	f = fopen(argv[1], "r+");
-	if (!f)
-		return (EXIT_FAILURE);
-	result = leak_test((bool (*)(const void *))test, (void *)f, NULL);
-	fclose(f);
-	if (result)
-		return (EXIT_FAILURE);
-	return (EXIT_SUCCESS);
-}
+#endif
