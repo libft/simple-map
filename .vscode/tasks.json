@@ -4,7 +4,7 @@
     {
       "label": "Build case1",
       "type": "shell",
-      "command": "make fclean && make obj/test.none.exe",
+      "command": "make fclean && make obj/test_none.exe",
       "group": {
         "kind": "build",
         "isDefault": false,

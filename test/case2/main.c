@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 10:58:57 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/05/17 16:38:45 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/05/17 16:59:50 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static bool	test_get(
 	leak_test_start();
 	result = ft_simple_map_static_get(map, (void *)&key, (void **)&out);
 	leak_test_end();
-	return (result != e || (!result && !strcmp(out, value)));
+	return (result != e || (!result && strcmp(out, value)));
 }
 
 static bool	test_set(
@@ -41,13 +41,14 @@ static bool	test_set(
 	const char *value
 )
 {
-	char *const	str = strdup(value);
-	bool		result;
+	char	*str;
+	bool	result;
 
 	printf("test_set(%d, %s)\n", key, value);
+	leak_test_start();
+	str = strdup(value);
 	if (!str)
 		return (true);
-	leak_test_start();
 	result = ft_simple_map_static_set(map, (void *)&key, (void *)str);
 	leak_test_end();
 	return (result != e);
@@ -69,8 +70,7 @@ static bool	test_pop(
 	leak_test_start();
 	result = ft_simple_map_static_pop(map, (void *)&key, (void **)&out);
 	leak_test_end();
-	test_result = (result != e
-			|| (!result && !strcmp(out, value)));
+	test_result = (result != e || (!result && strcmp(out, value)));
 	free(out);
 	return (test_result);
 }

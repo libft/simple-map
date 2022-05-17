@@ -10,7 +10,7 @@
         "../data/cases/2-two-entries.csv"
       ],
       "cwd": "${workspaceFolder}/test/case2",
-      "preLaunchTask": "Build case2",
+      "preLaunchTask": "Build case1",
     },
     {
       "type": "lldb",
