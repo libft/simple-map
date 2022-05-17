@@ -15,11 +15,12 @@ deinit: fclean
 .PHONY: all clean fclean re test init deinit
 
 CC := clang
-CPPFLAGS := -Wall -Wextra -Werror -std=c99 -pedantic -I../target -g3
+CFLAGS := -Wall -Wextra -Werror -std=c99 -pedantic
+CPPFLAGS := -I../target -g3
 
 leak_test/libft_leak_test.none.a: leak_test
 	$Q$(MAKE) -C $(@D) $(@F)
 test.exe: leak_test/libft_leak_test.none.a ../target/none.a
-	$Q$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ leak_test/.build/malloc_mock.none.o $(shell find . -maxdepth 1 -type f -name "*.c") $^
+	$Q$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ $(shell find . -maxdepth 1 -type f -name "*.c") $^
 leak_test:
 	$Qsh ./init.sh
