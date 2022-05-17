@@ -8,7 +8,7 @@ re:
 	$Q$(MAKE) fclean
 	$Q$(MAKE) all
 test: test.exe
-	$Q$(foreach t,$(shell find ../data/cases -type f -name "*.csv"),./$< $t && )true
+	$Q$(foreach t,$(shell find ../data/int_string -type f -name "*.csv"),./$< $t && )true
 init: leak_test
 deinit: fclean
 	$Qrm -rf leak_test

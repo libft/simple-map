@@ -19,7 +19,7 @@ CC := clang
 CFLAGS := -Wall -Wextra -Werror -std=c99 -pedantic -g3
 
 $(addprefix test_,none address memory undefined): test_%: obj/test_%.exe
-	$Q$(foreach t,$(shell find ../data/cases -type f -name "*.csv"),./$< < $t && )true
+	$Q$(foreach t,$(shell find ../data/int_string -type f -name "*.csv"),./$< < $t && )true
 obj/test_none.exe: obj/lib.none.a
 	$Q$(CC) -o $@ ../target/none.a $^
 obj/test_address.exe: obj/lib.address.a
