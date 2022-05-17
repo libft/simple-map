@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 10:58:57 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/05/17 18:22:14 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/05/18 00:38:21 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 #include "leak_test/include/ft/leak_test.h"
 
 #include "test.h"
-
-static const char	*g_b[2] = {"false", "true"};
 
 static void	test_free(void *ptr)
 {
@@ -40,7 +38,6 @@ static bool	test_get(
 	bool	result;
 	bool	test_result;
 
-	printf("test_get(%d, expect: \"%-7.7s...\") == %s\n", key, value, g_b[!!e]);
 	leak_test_start();
 	result = ft_simple_map_static_get(map, (void *)&key, (void **)&out);
 	leak_test_end();
@@ -59,7 +56,6 @@ static bool	test_set(
 	bool		result;
 	bool		test_result;
 
-	printf("test_set(%d, value : \"%-7.7s...\") == %s\n", key, value, g_b[!!e]);
 	if (!str)
 		exit(EXIT_FAILURE);
 	leak_test_start();
@@ -80,7 +76,6 @@ static bool	test_pop(
 	bool	result;
 	bool	test_result;
 
-	printf("test_pop(%d, expect: \"%-7.7s...\") == %s\n", key, value, g_b[!!e]);
 	out = NULL;
 	leak_test_start();
 	result = ft_simple_map_static_pop(map, (void *)&key, (void **)&out);
@@ -98,7 +93,6 @@ bool	test(FILE *f)
 	char					v[1024];
 	t_ft_simple_map_static	*m;
 
-	puts("[DEBUG] Leak test start");
 	fseek(f, 0, SEEK_SET);
 	leak_test_start();
 	m = new_ft_simple_map_static(sizeof(int));
