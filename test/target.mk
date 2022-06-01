@@ -14,12 +14,15 @@ target/%.a:
 	$Q$(AR) $(ARFLAGS) $@ $^
 
 target/none.a: $(addprefix target/,$(SRCS:.c=.none.o))
+target/leak.a: $(addprefix target/,$(SRCS:.c=.leak.o))
 target/address.a: $(addprefix target/,$(SRCS:.c=.address.o))
 target/memory.a: $(addprefix target/,$(SRCS:.c=.memory.o))
 target/undefined.a: $(addprefix target/,$(SRCS:.c=.undefined.o))
 
 target/%.none.o: target/%.c
 	$Q$(CC) $(CFLAGS) -c -o $@ $<
+target/%.leak.o: target/%.c
+	$Q$(CC) $(CFLAGS) -fsanitize=leak -c -o $@ $<
 target/%.address.o: target/%.c
 	$Q$(CC) $(CFLAGS) -fsanitize=address -c -o $@ $<
 target/%.memory.o: target/%.c

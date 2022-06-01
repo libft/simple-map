@@ -10,6 +10,7 @@ re:
 	$Q$(MAKE) all
 test:
 	$Q$(MAKE) test_none
+	$Q[ ! -f ../target/leak.a ] || $(MAKE) test_leak
 	$Q[ ! -f ../target/address.a ] || $(MAKE) test_address
 	$Q[ ! -f ../target/memory.a ] || $(MAKE) test_memory
 	$Q[ ! -f ../target/undefined.a ] || $(MAKE) test_undefined
@@ -18,10 +19,12 @@ test:
 CC := clang
 CFLAGS := -Wall -Wextra -Werror -std=c99 -pedantic -g3
 
-$(addprefix test_,none address memory undefined): test_%: obj/test_%.exe
+$(addprefix test_,none leak address memory undefined): test_%: obj/test_%.exe
 	$Q$(foreach t,$(shell find ../data/int_string -type f -name "*.csv"),./$< < $t && )true
 obj/test_none.exe: obj/lib.none.a
 	$Q$(CC) -o $@ ../target/none.a $^
+obj/test_leak.exe: obj/lib.leak.a
+	$Q$(CC) -o $@ ../target/leak.a $^
 obj/test_address.exe: obj/lib.address.a
 	$Q$(CC) -fsanitize=address -o $@ ../target/address.a $^
 obj/test_memory.exe: obj/lib.memory.a
