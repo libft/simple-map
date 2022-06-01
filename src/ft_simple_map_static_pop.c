@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 02:01:04 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/05/12 03:32:35 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/06/01 12:00:16 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static bool	ft_simple_map_static_pop_internal(
 
 bool	ft_simple_map_static_pop(
 	t_ft_simple_map_static *self,
-	void *key,
+	const void *key,
 	void **out
 )
 {

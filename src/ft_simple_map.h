@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 01:42:14 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/05/16 12:09:00 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/06/01 11:59:13 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,15 @@ void					ft_simple_map_static_free(
 							void (*free_value)(void *value));
 bool					ft_simple_map_static_set(
 							t_ft_simple_map_static *self,
-							void *key,
+							const void *key,
 							void *value);
 bool					ft_simple_map_static_get(
 							t_ft_simple_map_static *self,
-							void *key,
+							const void *key,
 							void **out);
 bool					ft_simple_map_static_pop(
 							t_ft_simple_map_static *self,
-							void *key,
+							const void *key,
 							void **out);
 
 #endif

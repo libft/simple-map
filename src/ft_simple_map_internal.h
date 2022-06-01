@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 01:42:14 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/05/16 12:03:50 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/06/01 11:59:51 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ typedef struct s_ft_simple_map_static
 typedef struct s_ft_simple_map_static_context_set
 {
 	t_ft_simple_map_static	*self;
-	void					*key;
+	const void				*key;
 	void					*value;
 }	t_ft_simple_map_static_context_set;
 
 typedef struct s_ft_simple_map_static_context_get
 {
 	t_ft_simple_map_static	*self;
-	void					*key;
+	const void				*key;
 	void					**out;
 }	t_ft_simple_map_static_context_get;
 
