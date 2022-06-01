@@ -10,13 +10,10 @@ SRCS := $(shell find ../src -maxdepth 1 -type f -name "*.c")
 %.a:
 	$Q$(AR) $(ARFLAGS) $@ $^
 
-none.a: $(patsubst ../src/%.c,%.none.o,$(SRCS))
-address.a: $(patsubst ../src/%.c,%.address.o,$(SRCS))
-memory.a: $(patsubst ../src/%.c,%.memory.o,$(SRCS))
-undefined.a: $(patsubst ../src/%.c,%.undefined.o,$(SRCS))
-
 %.none.o: ../src/%.c
 	$Q$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
+%.leak.o: ../src/%.c
+	$Q$(CC) $(CFLAGS) $(CPPFLAGS) -fsanitize=leak -c -o $@ $<
 %.address.o: ../src/%.c
 	$Q$(CC) $(CFLAGS) $(CPPFLAGS) -fsanitize=address -c -o $@ $<
 %.memory.o: ../src/%.c
@@ -25,6 +22,7 @@ undefined.a: $(patsubst ../src/%.c,%.undefined.o,$(SRCS))
 	$Q$(CC) $(CFLAGS) $(CPPFLAGS) -fsanitize=undefined -c -o $@ $<
 
 lib.none.a: $(patsubst ../src/%.c,%.none.o,$(SRCS))
+lib.leak.a: $(patsubst ../src/%.c,%.leak.o,$(SRCS))
 lib.address.a: $(patsubst ../src/%.c,%.address.o,$(SRCS))
 lib.memory.a: $(patsubst ../src/%.c,%.memory.o,$(SRCS))
 lib.undefined.a: $(patsubst ../src/%.c,%.undefined.o,$(SRCS))
