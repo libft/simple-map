@@ -39,5 +39,43 @@
         "$gcc",
       ],
     },
+    {
+      "label": "Build case3",
+      "type": "shell",
+      "command": "make fclean && make obj/test_none.exe",
+      "group": {
+        "kind": "build",
+        "isDefault": false,
+      },
+      "presentation": {
+        "reveal": "always",
+        "focus": false
+      },
+      "options": {
+        "cwd": "${workspaceFolder}/test/case3"
+      },
+      "problemMatcher": [
+        "$gcc",
+      ],
+    },
+    {
+      "label": "Build case4",
+      "type": "shell",
+      "command": "make fclean && make test.exe",
+      "group": {
+        "kind": "build",
+        "isDefault": false,
+      },
+      "presentation": {
+        "reveal": "always",
+        "focus": false
+      },
+      "options": {
+        "cwd": "${workspaceFolder}/test/case4"
+      },
+      "problemMatcher": [
+        "$gcc",
+      ],
+    },
   ],
 }

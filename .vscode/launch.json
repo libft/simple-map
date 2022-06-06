@@ -9,7 +9,7 @@
       "args": [
         "../data/int_string/2-two-entries.csv",
       ],
-      "cwd": "${workspaceFolder}/test/case2",
+      "cwd": "${workspaceFolder}/test/case1",
       "preLaunchTask": "Build case1",
     },
     {
@@ -22,6 +22,28 @@
       ],
       "cwd": "${workspaceFolder}/test/case2",
       "preLaunchTask": "Build case2",
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug case3",
+      "program": "${workspaceFolder}/test/case3/obj/test_none.exe",
+      "args": [
+        "../data/int_string/2-two-entries.csv",
+      ],
+      "cwd": "${workspaceFolder}/test/case3",
+      "preLaunchTask": "Build case3",
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug case4",
+      "program": "${workspaceFolder}/test/case4/test.exe",
+      "args": [
+        "../data/int_string/1-basic.csv",
+      ],
+      "cwd": "${workspaceFolder}/test/case4",
+      "preLaunchTask": "Build case4",
     },
   ],
 }
