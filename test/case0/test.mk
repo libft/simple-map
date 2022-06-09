@@ -9,7 +9,7 @@ NORMINETTE = norminette
 .PHONY: test
 test: $(addprefix obj/, $(SRCS:.c=.o))
 obj/%.o: src/%.c | obj
-	$Q$(NORMINETTE) $<
+	$Q[ "$$SKIP_NORMINETTE" = "1" ] || $(NORMINETTE) $<
 	$Q$(CC) $(CFLAGS) -c -o $@ $<
 obj:
 	$Qmkdir obj
