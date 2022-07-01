@@ -24,5 +24,7 @@ re:
 	@$(MAKE) fclean
 	@$(MAKE) all
 test:
-	@cd test && make test
+	@( command -v norminette ) || printf "\033[0;34mnorminette command not found, skipping.\033[0m\n"
+	@( command -v norminette ) || (cd test && make SKIP_NORMINETTE=1 test)
+	@( ! command -v norminette ) || (cd test && make test)
 .PHONY: all clean fclean $(NAME) test
