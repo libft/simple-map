@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 01:42:14 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/07/02 00:19:29 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/07/02 00:36:42 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ bool					ft_simple_map_dynamic_pop(
 bool					ft_simple_map_dynamic_iterate(
 							t_ft_simple_map_dynamic *self,
 							void *context,
-							size_t key_length,
 							bool (*f)(void *value, void *context));
 
 #endif
