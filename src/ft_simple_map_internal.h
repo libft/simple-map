@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 01:42:14 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/06/06 02:13:47 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/07/02 00:17:11 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,19 @@
 # include <stdbool.h>
 # include <limits.h>
 
+# define FT_SIMPLE_MAP_TYPE_DEFINED
+
 typedef union u_ft_simple_map_static_value
 {
 	void								*value[1 << CHAR_BIT];
 	union u_ft_simple_map_static_value	*array[1 << CHAR_BIT];
 }	t_ft_simple_map_static_value;
 
-# define S_FT_SIMPLE_MAP_STATIC_DEFINED
-
 typedef struct s_ft_simple_map_static
 {
 	size_t							key_length;
 	t_ft_simple_map_static_value	*values;
 }	t_ft_simple_map_static;
-
-# define S_FT_SIMPLE_MAP_DYNAMIC_DEFINED
 
 typedef struct s_ft_simple_map_dynamic
 {

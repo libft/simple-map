@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 01:42:14 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/06/06 02:24:44 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/07/02 00:19:29 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,10 @@
 # include <stddef.h>
 # include <stdbool.h>
 
-# ifndef S_FT_SIMPLE_MAP_STATIC_DEFINED
-#  define S_FT_SIMPLE_MAP_STATIC_DEFINED
+# ifndef FT_SIMPLE_MAP_TYPE_DEFINED
+#  define FT_SIMPLE_MAP_TYPE_DEFINED
 
 typedef void	t_ft_simple_map_static;
-
-# endif
-
-# ifndef S_FT_SIMPLE_MAP_DYNAMIC_DEFINED
-#  define S_FT_SIMPLE_MAP_DYNAMIC_DEFINED
-
 typedef void	t_ft_simple_map_dynamic;
 
 # endif
@@ -47,6 +41,10 @@ bool					ft_simple_map_static_pop(
 							t_ft_simple_map_static *self,
 							const void *key,
 							void **out);
+bool					ft_simple_map_static_iterate(
+							t_ft_simple_map_static *self,
+							void *context,
+							bool (*f)(void *value, void *context));
 
 t_ft_simple_map_dynamic	*new_ft_simple_map_dynamic(void);
 void					ft_simple_map_dynamic_free(
@@ -67,5 +65,10 @@ bool					ft_simple_map_dynamic_pop(
 							const void *key,
 							size_t key_length,
 							void **out);
+bool					ft_simple_map_dynamic_iterate(
+							t_ft_simple_map_dynamic *self,
+							void *context,
+							size_t key_length,
+							bool (*f)(void *value, void *context));
 
 #endif
