@@ -6,11 +6,11 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 02:01:04 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/05/15 02:28:41 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/09/12 08:18:08 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_simple_map_internal.h"
+#include "ft_simple_map_type.h"
 
 #include <stdlib.h>
 

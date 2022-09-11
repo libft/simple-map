@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 01:42:14 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/07/02 00:36:42 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/09/12 08:16:30 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,7 @@
 # include <stddef.h>
 # include <stdbool.h>
 
-# ifndef FT_SIMPLE_MAP_TYPE_DEFINED
-#  define FT_SIMPLE_MAP_TYPE_DEFINED
-
-typedef void	t_ft_simple_map_static;
-typedef void	t_ft_simple_map_dynamic;
-
-# endif
+# include "ft_simple_map_type.h"
 
 t_ft_simple_map_static	*new_ft_simple_map_static(
 							size_t key_length);

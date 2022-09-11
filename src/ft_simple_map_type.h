@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_simple_map_internal.h                           :+:      :+:    :+:   */
+/*   ft_simple_map_type.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 01:42:14 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/07/02 00:17:11 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/09/12 08:17:40 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SIMPLE_MAP_INTERNAL_H
-# define FT_SIMPLE_MAP_INTERNAL_H
+#ifndef FT_SIMPLE_MAP_TYPE_H
+# define FT_SIMPLE_MAP_TYPE_H
 
+# include <limits.h>
 # include <stddef.h>
 # include <stdbool.h>
-# include <limits.h>
-
-# define FT_SIMPLE_MAP_TYPE_DEFINED
 
 typedef union u_ft_simple_map_static_value
 {
